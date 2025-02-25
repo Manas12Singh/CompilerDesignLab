@@ -8,7 +8,10 @@ int lines=0,space=0,tab=0,rest=0;
 [ ] {space++;}
 . {rest++;}
 %%
-int yywrap(void){	}
+
+int yywrap(){
+	return 1;
+}
 
 int main(){
     yylex();

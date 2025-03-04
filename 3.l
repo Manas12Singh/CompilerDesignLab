@@ -4,7 +4,7 @@
 
 %%
 [a-zA-Z_][a-zA-Z0-9_]* {printf("Valid Identifier\n");}
-^[^a-zA-A_] {printf("Invalid Identifier\n");}
+^[^a-zA-Z_] {printf("Invalid Identifier\n");}
 .* {printf("Invalid Identifier\n");}
 %%
 int yywrap(){

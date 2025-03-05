@@ -16,14 +16,13 @@ int yywrap() {
 }
 
 int main() {
-    FILE *fp = fopen("Input.txt", "r");
-    if (!fp) {
+    yyin = fopen("Input.txt", "r");
+    if (!yyin) {
         perror("Failed to open file");
         return 1;
     }
-    yyin = fp;
     yylex();
-    fclose(fp);
+    fclose(yyin);
     printf("The number of total characters in the given input file is: %d\n", character);
     printf("The number of total words in the given input file is: %d\n", word);
     printf("The number of total whitespaces in the given input file is: %d\n", whitespace);

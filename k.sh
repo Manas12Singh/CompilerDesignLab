@@ -21,9 +21,9 @@ gcc lex.yy.c -o lex_output -ll
 
 # Print a string before running the compiled output
 echo 
-echo "\e[32m@DhruvJoshi44 ➜ \e[1;34m/workspaces/CompilerDesignLab \e[31m(main) \e[0m$ lex $1"
-echo "\e[32m@DhruvJoshi44 ➜ \e[1;34m/workspaces/CompilerDesignLab \e[31m(main) \e[0m$ gcc lex.yy.c"
-echo "\e[32m@DhruvJoshi44 ➜ \e[1;34m/workspaces/CompilerDesignLab \e[31m(main) \e[0m$ ./a.out"
+echo "\e[32m@Manas12Singh ➜ \e[1;34m/workspaces/CompilerDesignLab \e[31m(main) \e[0m$ lex $1"
+echo "\e[32m@Manas12Singh ➜ \e[1;34m/workspaces/CompilerDesignLab \e[31m(main) \e[0m$ gcc lex.yy.c"
+echo "\e[32m@Manas12Singh ➜ \e[1;34m/workspaces/CompilerDesignLab \e[31m(main) \e[0m$ ./a.out"
 
 # Run the compiled output
 ./lex_output

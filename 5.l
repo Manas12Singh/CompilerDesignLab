@@ -1,6 +1,5 @@
 %{
 #include <stdio.h>
-#include <string.h>
 
 void print_token(char *token, char *type) {
     printf("%s is %s.\n", token, type);

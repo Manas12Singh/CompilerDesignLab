@@ -1,14 +1,13 @@
 %{
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 int character=0, word=0, whitespace=0;
 %}
 
 %%
-[a-zA-Z]+ { word++; character+=strlen(yytext); }
+[a-zA-Z0-9]+ { word++; character+=yyleng; }
 [ \t\n] { whitespace++;character++; }
-. { character++; }
+. ;
 %%
 
 int yywrap() {

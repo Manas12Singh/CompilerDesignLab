@@ -2,14 +2,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
-
-FILE *infile, *outfile;
 %}
 
 %%
-[ ]+   { fputc(' ', outfile); }
-\n    { fputc('\n', outfile); }
-.        { fputc(yytext[0], outfile); }
+[ \t]+   { fputs(" ", yyout); }
+. { fputs(yytext, yyout); }
 %%
 
 int yywrap() {
@@ -17,24 +14,24 @@ int yywrap() {
 }
 
 int main() {
-    infile = fopen("Input.txt", "r");
-    if (!infile) {
+    yyin = fopen("Input.txt", "r");
+    if (!yyin) {
         perror("Error opening Input.txt");
         return 1;
     }
     
-    outfile = fopen("Output.txt", "w");
-    if (!outfile) {
+    yyout = fopen("Output.txt", "w");
+    if (!yyout) {
         perror("Error opening Output.txt");
-        fclose(infile);
+        fclose(yyin);
         return 1;
     }
     
-    yyin = infile;
+    yyin = yyin;
     yylex();
     
-    fclose(infile);
-    fclose(outfile);
+    fclose(yyin);
+    fclose(yyout);
     
     return 0;
 }

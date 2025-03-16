@@ -1,15 +1,10 @@
 %{
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-FILE *out;
 %}
 
 %%
-\/\/[^\n]* {}
-\n { fprintf(out, "\n"); }
-.* { fprintf(out, "%s", yytext); }
+"//".*\n ;
+"/*"(.*\n)*"*/" ;
 %%
 
 int yywrap() {
@@ -17,12 +12,19 @@ int yywrap() {
 }
 
 int main() {
-    out = fopen("out.c", "w");
-    if (!out) {
+    extern FILE *yyin, *yyout;
+    yyin = fopen("in.c", "r");
+    if (!yyin) {
         perror("Failed to open file");
         return 1;
     }
+    yyout = fopen("out.c", "w");
+    if (!yyout) {
+        perror("Failed to open file");
+        fclose(yyin);
+        return 1;
+    }
     yylex();
-    fclose(out);
+    fclose(yyout);
     return 0;
 }

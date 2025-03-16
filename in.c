@@ -1,4 +1,5 @@
-#include <stdio.h> 
+#include <stdio.h> // For std::min and std::__gcd
+
 class Solution
 {
     /**
@@ -23,7 +24,10 @@ class Solution
      */
     long long findn(long long i, long long a, long long b, long long c)
     {
-        return i / a + i / b + i / c                             - i / lcm(a, b) - i / lcm(a, c) - i / lcm(b, c)                 + i / lcm(lcm(a, b), c);               }
+        return i / a + i / b + i / c              // Individual counts
+               - i / lcm(a, b) - i / lcm(a, c) - i / lcm(b, c)  // Remove overcounted pairs
+               + i / lcm(lcm(a, b), c);           // Add back LCM of all three
+    }
 
 public:
     /**
@@ -37,11 +41,16 @@ public:
      */
     int nthUglyNumber(int n, int a, int b, int c)
     {
-        long long l = 1, r = 2e9, mid;          while (l < r)
+        long long l = 1, r = 2e9, mid;  // Define search range
+        while (l < r)
         {
-            mid = l + (r - l) / 2;  
+            mid = l + (r - l) / 2;  // Avoid potential integer overflow
+
             if (findn(mid, a, b, c) < n)
-                l = mid + 1;              else
-                r = mid;              }
-        return l;      }
+                l = mid + 1;  // If count is too small, increase lower bound
+            else
+                r = mid;      // If count is sufficient, reduce upper bound
+        }
+        return l;  // `l` is the smallest valid number satisfying the condition
+    }
 };

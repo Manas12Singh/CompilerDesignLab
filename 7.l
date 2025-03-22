@@ -26,8 +26,6 @@ int main() {
         fclose(yyin);
         return 1;
     }
-    
-    yyin = yyin;
     yylex();
     
     fclose(yyin);

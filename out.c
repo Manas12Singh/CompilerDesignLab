@@ -16,13 +16,7 @@ int main()
 {
     int n;
 
-    /* Askin
-    printf("GCD of given numbers is: %d\n", result);
-
-    return 0;
-}g the user for the number of elements
-    /* amnasasas
-       and storing the input in 'n' */
+    
     printf("Enter the number of elements: "); 
     scanf("%d", &n);                          
 
@@ -33,8 +27,7 @@ int main()
     for (int i = 0; i < n; i++) 
     {
         scanf("%d", &numbers[i]); 
-    } /* amnasasas
-        and storing the input in 'n' */
+    } 
 
     
     int result = numbers[0];    

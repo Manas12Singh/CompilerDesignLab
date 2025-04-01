@@ -4,7 +4,7 @@ extern FILE *yyin,*yyout;
 %}
 
 %%
-\<[^\<\>]*\> {fprintf(yyout,"%s",yytext);}
+"<"[a-zA-Z0-9/!][^>]*">" {fprintf(yyout,"%s",yytext);}
 . ;
 %%
 

@@ -10,6 +10,7 @@ auto|break|case|char|const|continue|default|do|double|else|enum|extern|float|for
 [+-]?[0-9]*(\.[0-9]+)? {print_token(yytext, "constants");}
 [a-zA-Z_][a-zA-Z0-9_]* {print_token(yytext, "identifiers");}
 \'.*\' {print_token(yytext, "literals");}
+[a-z] {fputc()}
 %%
 
 int yywrap(){

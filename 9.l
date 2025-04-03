@@ -4,9 +4,13 @@ extern FILE *yyin,*yyout;
 %}
 
 %%
-"<"[a-zA-Z0-9/!][^>]*">" {fprintf(yyout,"%s",yytext);}
+"<"[!/]?[a-zA-Z][^>]*">" {fprintf(yyout,"%s",yytext);}
 . ;
 %%
+
+int yywrap(){
+    return 1;
+}
 
 int main(){
     yyout = fopen("out.txt","w");

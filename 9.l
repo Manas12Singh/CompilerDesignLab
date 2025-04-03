@@ -9,7 +9,6 @@ extern FILE *yyin,*yyout;
 %%
 
 int main(){
-    yyin = fopen("in.html","r");
     yyout = fopen("out.txt","w");
     yylex();
     return 0;

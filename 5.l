@@ -12,6 +12,7 @@ auto|break|case|char|const|continue|default|do|double|else|enum|extern|float|for
 "+"|"-"|"*"|"/"|"="|"%" { print_token(yytext, "an operator"); }
 [\,\;\(\)\{\}] { print_token(yytext, "a separator"); }
 [a-zA-Z_][a-zA-Z0-9_]* { print_token(yytext, "an identifier"); }
+[0-9]+ {print_token(yytext,"a constant");}
 [ \t\n] {}
 . { printf("Unknown character: %s\n", yytext); }
 %%

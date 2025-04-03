@@ -4,4 +4,4 @@ void print(char *a,char* b){
     printf("%s is %s",a,b);
 }
 %}
-^[+-]?[0-9]*[24680]$ {}
+^[+-]?[0-9]*[24680]$ {print(yytext,)}

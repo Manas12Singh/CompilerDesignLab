@@ -1,4 +1,5 @@
 #!/bin/bash
+
 export PS1='\[\e[1;32m\]@HiS \[\e[1;34m\]→ \[\e[1;36m\]\w \[\e[1;31m\](main) \[\e[0m\]$ '
 
 # Check if a file is provided as an argument
@@ -17,15 +18,15 @@ fi
 lex "$1"
 
 # Compile the generated lex.yy.c file
-gcc lex.yy.c -o lex_output -ll
+gcc lex.yy.c
 
-# Print a string before running the compiled output
-echo 
-echo "\e[32m@User ➜ \e[1;34m/workspaces/CompilerDesignLab \e[31m(main) \e[0m$ lex $1"
-echo "\e[32m@User ➜ \e[1;34m/workspaces/CompilerDesignLab \e[31m(main) \e[0m$ gcc lex.yy.c"
-echo "\e[32m@User ➜ \e[1;34m/workspaces/CompilerDesignLab \e[31m(main) \e[0m$ ./a.out"
+# Print commands to simulate shell activity
+echo
+echo -e "\e[32m@User ➜ \e[1;34m/workspaces/CompilerDesignLab \e[31m(main) \e[0m$ lex $1"
+echo -e "\e[32m@User ➜ \e[1;34m/workspaces/CompilerDesignLab \e[31m(main) \e[0m$ gcc lex.yy.c"
+echo -e "\e[32m@User ➜ \e[1;34m/workspaces/CompilerDesignLab \e[31m(main) \e[0m$ ./a.out"
 
 # Run the compiled output
-./lex_output
+./a.out
 
 echo

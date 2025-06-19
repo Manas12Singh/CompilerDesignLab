@@ -5,14 +5,11 @@
 %%
 [0-9]+          { yylval = atoi(yytext); return NUMBER; }
 [\n]            { return '\n'; }
-[ \t]           ;  // Ignore whitespace
+[ \t]           ;
 "+"             { return '+'; }
 "-"             { return '-'; }
 "*"             { return '*'; }
 "/"             { return '/'; }
-"("             { return '('; }
-")"             { return ')'; }
-
 .               { printf("Invalid character: %s\n", yytext); }
 %%
 

@@ -4,9 +4,11 @@
 
 digit   [0-9]
 %%
-{digit}+    { yylval = atoi(yytext); return NUMBER; }
-[\+\-\*\/\(\)]         { return *yytext; }
-[ \t\n]     ;
+{digit}+    { return NUMBER; }
+[\+\-\*\/]         { return *yytext; }
+[ ]     ;
+\n      { return '\n'; }
+
 %%
 
 int yywrap() {

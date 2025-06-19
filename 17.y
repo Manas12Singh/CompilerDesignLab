@@ -13,25 +13,24 @@ void yyerror(const char *s);
 %%
 
 input:
-    expr    { printf("Valid expression\n"); }
-    | input expr    { printf("Valid expression\n"); }
+    expr '\n' input 
+    |
     ;
 
 expr:
-    expr '+' term
-    | expr '-' term
-    | term
+    term { printf("Valid expression\n"); } 
     ;
 
 term:
-    term '*' factor
-    | term '/' factor
-    | factor
+    term sign term
+    | NUMBER
     ;
 
-factor:
-    NUMBER
-    | '(' expr ')'
+sign:
+    '+'
+    | '-'
+    | '*'
+    | '/'
     ;
 
 %%
